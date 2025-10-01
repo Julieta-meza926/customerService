@@ -20,6 +20,7 @@ public class JmsConfig {
         return template;
     }
 
+    //Primer commit al repositorio remoto de git
     @Bean
     public MessageConverter jacksonMessageConverter(ObjectMapper objectMapper) {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
