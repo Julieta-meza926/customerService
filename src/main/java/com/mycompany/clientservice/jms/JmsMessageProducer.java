@@ -1,5 +1,5 @@
 package com.mycompany.clientservice.jms;
-import com.mycompany.shared.dto.ClientEventDTO;
+import com.mycompany.clientservice.model.dto.ClientEventDTO;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

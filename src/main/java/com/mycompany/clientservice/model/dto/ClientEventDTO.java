@@ -1,4 +1,4 @@
-package com.mycompany.shared.dto;
+package com.mycompany.clientservice.model.dto;
 
 
 import lombok.AllArgsConstructor;

@@ -8,7 +8,7 @@ import com.mycompany.clientservice.jms.JmsMessageProducer;
 import com.mycompany.clientservice.entity.Client;
 import com.mycompany.clientservice.model.dto.ClientDTO;
 import com.mycompany.clientservice.repository.ClientRepository;
-import com.mycompany.shared.dto.ClientEventDTO;
+import com.mycompany.clientservice.model.dto.ClientEventDTO;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

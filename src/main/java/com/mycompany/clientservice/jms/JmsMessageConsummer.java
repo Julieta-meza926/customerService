@@ -1,5 +1,5 @@
 package com.mycompany.clientservice.jms;
-import com.mycompany.shared.dto.ClientEventDTO;
+import com.mycompany.clientservice.model.dto.ClientEventDTO;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
