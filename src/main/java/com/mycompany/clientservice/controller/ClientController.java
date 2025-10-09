@@ -1,15 +1,17 @@
 package com.mycompany.clientservice.controller;
-import com.mycompany.clientservice.service.ClientCommandService;
+
+import com.mycompany.clientservice.command.CreateClientCommand;
 import com.mycompany.clientservice.command.UpdateClientCommand;
 import com.mycompany.clientservice.model.dto.ClientDTO;
 import com.mycompany.clientservice.service.ClientQueryService;
-import com.mycompany.clientservice.command.CreateClientCommand;
+import com.mycompany.clientservice.service.ClientCommandService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Map;
 

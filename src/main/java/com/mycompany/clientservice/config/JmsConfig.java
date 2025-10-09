@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class JmsConfig {
     public MappingJackson2MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTypeIdPropertyName("_type");
+        converter.setTargetType(MessageType.TEXT);
 
         Map<String, Class<?>> typeIdMappings = new HashMap<>();
         typeIdMappings.put("com.julieta.order.dto.EventDTO", EventDTO.class);

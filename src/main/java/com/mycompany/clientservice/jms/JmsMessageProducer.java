@@ -16,8 +16,8 @@ public class JmsMessageProducer {
 
     @CircuitBreaker(name = "clientServiceBreaker", fallbackMethod = "sendFallback")
     public void sendClientEvent(ClientEventDTO event) {
-        System.out.println("Sending client event: " + event.getEventType() +
-                " for client ID: " + event.getClientId());
+        log.info("Sending client event: {}" , event.getEventType() ,
+                " for client ID: {}" , event.getClientId());
         jmsTemplate.convertAndSend(CLIENT_QUEUE, event);
     }
 
