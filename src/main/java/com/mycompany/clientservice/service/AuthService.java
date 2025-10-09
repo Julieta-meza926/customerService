@@ -1,5 +1,6 @@
 package com.mycompany.clientservice.service;
 import com.mycompany.clientservice.exception.ClientNotFoundException;
+import com.mycompany.clientservice.exception.UsernameAlreadyExistsException;
 import com.mycompany.clientservice.model.dto.AppUserDTO;
 import com.mycompany.clientservice.model.dto.AuthRequest;
 import com.mycompany.clientservice.model.dto.AuthResponse;
@@ -85,7 +86,7 @@ public class AuthService {
 
         // Verificar si el username ya existe
         if (userRepository.findByUsername(request.getUsername()).isPresent()) {
-            throw new ClientNotFoundException("El username ya está en uso");
+            throw new UsernameAlreadyExistsException("El username ya está en uso");
         }
 
         // Si no se envía rol, asignamos uno por defecto
