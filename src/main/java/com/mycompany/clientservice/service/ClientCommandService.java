@@ -3,11 +3,16 @@ package com.mycompany.clientservice.service;
 import com.mycompany.clientservice.command.CreateClientCommand;
 import com.mycompany.clientservice.command.UpdateClientCommand;
 import com.mycompany.clientservice.entity.Client;
+import com.mycompany.clientservice.jms.JmsMessageProducer;
 import com.mycompany.clientservice.model.dto.ClientDTO;
+import com.mycompany.shared.dto.ClientEventDTO;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.util.Map;
 
@@ -18,14 +23,16 @@ public class ClientCommandService {
 
     private final ClientService clientService;
     private final ClientEventService clientEventService;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     @Transactional
     public ClientDTO createClient(CreateClientCommand command) {
         log.info("Creando nuevo cliente: {}", command.getEmail());
         Client client = clientService.createClient(command);
-        clientEventService.publishClientCreated(client);
+        applicationEventPublisher.publishEvent(client);
         return mapToDTO(client);
     }
+
 
     @Transactional
     public ClientDTO updateClient(Long id, UpdateClientCommand command) {
@@ -44,7 +51,7 @@ public class ClientCommandService {
 
     @Transactional
     public void deleteClient(Long id) {
-        log.info("Creando nuevo cliente con id :", id);
+        log.info("Creando nuevo cliente con id :{}", id);
         Client client = clientService.deleteClient(id);
         clientEventService.publishClientDeleted(client);
     }
